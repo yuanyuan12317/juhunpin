@@ -1,0 +1,76 @@
+<view class="user-header">
+    <view class="user-tools">
+        <image class="user-setting" bindtap="quit" src="../../imgs/set.png" mode="aspectFit"/>
+        <text class="user-dialogue" bindtap = "showTel">联系客服</text>
+    </view>
+    <view class="user-info">
+        <navigator url="../login/login"><image src="{{avatarUrl}}" alt=""/></navigator>
+        <text>{{nickName}}</text>
+        <text>我的婚期：{{weddingday}}</text>
+    </view>
+</view>
+<view class="user-module">
+        <view>
+            <navigator href="./购物车.html">
+                <image src="../../imgs/shopcar.png" alt=""/>
+                <text>购物车</text>
+            </navigator>
+        </view>
+        <view>
+            <navigator href="./订单.html">
+                <image src="../../imgs/order.png" alt=""/>
+                <text>我的订单</text>
+            </navigator>
+        </view>
+        <view>
+            <navigator href="#">
+                <image src="../../imgs/discount.png" alt=""/>
+                <text>红包/优惠券</text>
+            </navigator>
+        </view>
+
+</view>
+<view class="user-collect">
+    <view class="user-collect-title">
+        <view bindtap="toggle" data-num = "0" class="user-single {{num == 0  ? 'on' : ''}}">单品</view>
+        <view bindtap="toggle" data-num = "1" class="user-all {{num == 1  ?  'on' : ''}}">合集</view>
+    </view>
+    <view class="user-collect-box">
+       	<view class="xh"  hidden="{{num==0  ? false : true}}">
+            <view class="fixed xh-box">
+                <block wx:for="{{xh}}" wx:key="item.goods_id">
+                        <view class="xh-list">
+                            <image src="{{item.goods_thumb}}"/>
+                            <text class="xh-title">{{item.goods_name}}</text>
+                            <text class="xh-price">￥{{item.shop_price}}</text>
+                        </view>
+                </block>
+            </view>
+	    </view>
+        <view class="gl" hidden="{{num==1 ? false : true}}">
+			<view class="fixed">
+				<navigator wx:for="{{gl}}" wx:key = "{{item.article_id}}" url="../item/item?type={{ item.article_id }}&title={{ item.title }}&cat_id={{item.cat_id}}" hover-class="none">
+				  	<view class="gl-list">
+                        <view class="article-header">
+                            <view class="article-classify">
+                                <text class="label">原创文章</text>{{item.tag}}
+                            </view>
+                            <view class="article-author">
+                                <image class="avatar" src="{{item.avatar_url}}"/>
+                                <text class="nickname">{{item.author}}</text>
+                            </view>
+                        </view>
+                        <image class="article-image" src="{{item.article_thumb}}"/>
+                        <view class="article-title">
+                            <text class="article-title-text">{{item.title}}</text>
+                            <view class="shoplink-like">
+                                <image catchtap="tapName" id="{{goods_id}}" class="shoplink-heart" data-src="{{item.is_collected}}" src="{{item.is_collected ? '../../imgs/heart.png' : '../../imgs/heart1.png'}}"/>
+                                <text class="heare-val">{{item.collect_num}}</text>
+                            </view>
+                        </view>
+					 </view>
+				 </navigator>
+			</view>
+        </view>
+    </view>
+</view>

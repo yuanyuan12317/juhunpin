@@ -1,0 +1,16 @@
+<view class="container">  
+  <view class="usermotto">  
+    <text class="user-motto">欢迎登录<text style="color:#ff5777;">聚婚品</text></text>
+    <text class="register">注册</text>  
+    <label for="">
+        <text>用户名：</text>
+        <input class="inputForm" type="text" bindinput="userNameInput" placeholder="请输入用户名"/>  
+    </label>
+    <label for="">
+        <text>密　码：</text>  
+        <input type="text" bindinput="userPasswordInput" password="true" placeholder="请输入密码"/>  
+    </label>
+    <text class="forget">忘记密码？</text>
+    <button bindtap="logIn">登 录</button>  
+  </view>  
+</view>  

@@ -1,0 +1,39 @@
+   <view class="goods_pic">
+        <view class="goods_slider">
+            <swiper indicator-dots="true"
+                  autoplay="true" interval="2000" duration="1000">
+                <block wx:for="{{goodDetail.goods_gallery}}">
+                     <swiper-item>
+                        <image src="{{item.img_url}}" class="slide-image" width="355" height="150" mode="aspectFit"/>
+                     </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <view class="goods_detail">
+            <text class="goods_detail_tit">{{goodDetail.goods_name}}</text>
+            <view class="goods_price fixed">
+                <text class="goods_price_now">￥{{goodDetail.shop_price}}</text>
+                <text class="goods_like" style="color:#000;float: right;">{{goodDetail.fans_count}}人喜欢</text>
+            </view>
+            <text class="goods_des">{{goodDetail.goods_brief}}</text>
+        </view>
+    </view>
+    <view class="xh">
+        <text class="index-title">你也许喜欢 > </text>
+        <view class="fixed xh-box">
+        <navigator wx:for="{{goodDetail.like_goods}}" wx:key="item.goods_id" url="../goods/goods?type={{item.goods_id}}&title={{item.goods_name}} ">
+            <view class="xh-list">
+                <image src="{{item.goods_thumb}}"/>
+                <text class="xh-title">{{item.goods_name}}</text>
+                <text class="xh-price">￥{{item.shop_price}}</text>
+            </view>
+        </navigator>
+        </view>
+    </view>
+    <view class="goods-footer">
+        <view class="goods-like">
+            <image src="../../imgs/heart.png"></image>
+            <text>收藏</text>    
+        </view>
+        <view class="goods-link">去购买</view>
+    </view>

@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/list/list",
+    "pages/my/my",
+    "pages/choose/choose",
+    "pages/hj/hj",
+    "pages/goods/goods",
+    "pages/filter/filter",
+    "pages/login/login",
+    "pages/item/item"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#f5f5f5",
+    "navigationBarTitleText": "聚婚品",
+    "navigationBarTextStyle":"black"
+  },
+  
+  "tabBar": {
+    "selectedColor":"#ff5777",
+    "borderStyle":"white",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath":"imgs/index2.png",
+      "selectedIconPath":"imgs/index.png"
+    }, {
+      "pagePath": "pages/hj/hj",
+      "text": "优选",
+      "iconPath":"imgs/yx1.png",
+      "selectedIconPath":"imgs/yx.png"
+    },{
+      "pagePath": "pages/list/list",
+      "text": "分类",
+      "iconPath":"imgs/fl1.png",
+      "selectedIconPath":"imgs/fl.png"
+    },{
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath":"imgs/my1.png",
+      "selectedIconPath":"imgs/my.png"
+    }
+  ]
+  }
+}

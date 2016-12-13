@@ -1,0 +1,20 @@
+<view class="choose-title"> 
+	<text class="hj {{sort== 'default' ? 'on' : ''}}" bindtap="swichNav" data-sort="default" >综合</text>
+    <text class="title-center {{sort=='sales_volume' ? 'on' : ''}}" bindtap="swichNav" data-sort="sales_volume">销量</text>
+    <text class="dp {{sort=='price' ? 'on' : ''}}" bindtap="swichNav" data-sort="price">价格</text>
+</view>
+
+<scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px; padding-top:80rpx;"
+ scroll-y="true" bindscrolltoupper="pullDownRefresh" bindscrolltolower="pullUpLoad" >
+    <view class="xh">
+        <view class="fixed xh-box" style="padding-bottom:0">
+            <block wx:for="{{xh}}" wx:key="item.goods_id">
+                    <view class="xh-list">
+                        <image src="{{item.goods_thumb}}"/>
+                        <text class="xh-title">{{item.goods_name}}</text>
+                        <text class="xh-price">￥{{item.shop_price}}</text>
+                    </view>
+            </block>
+        </view>
+    </view>
+</scroll-view>

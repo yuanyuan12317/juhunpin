@@ -1,0 +1,82 @@
+	<view class="container"> 
+		<view class="slider">
+			<swiper indicator-dots="true"
+				  autoplay="true" interval="2000" duration="1000">
+				<navigator wx:for="{{sliderImages}}" wx:key = "{{item.id}}" url="../item/item?type={{ item.id }}&title={{ item.title }}" hover-class="none">
+             		<swiper-item>
+				        <image src="{{item.ad_code}}" class="slide-image" width="355" height="150" mode="aspectFill"/>
+				     </swiper-item>
+          		</navigator>
+			</swiper>
+		</view>
+		<view class="dayNews"> 
+			<view class="dayNews-box">
+				<text class="dayNews-title">每日播报</text>
+				<scroll-view class="dayNews-slider"  scroll-y="true" scroll-into-view="{{toView}}" >
+					<view class="inner">
+						<navigator id='{{"w"+item.article_id}}' wx:for="{{dayNews}}" wx:key = "{{item.article_id}}" url="../item/item?type={{ item.article_id }}&title={{ item.title }}" hover-class="none">
+							<view class="sv-like-item">
+								<text  class="dayNews-text">{{item.title}}</text>
+							</view>
+						</navigator>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+	</view>	
+	<!--<view class="active">
+			<block wx:for="{{activeImgs}}" wx:key="item.goods_id">
+				  <image src="{{item.cover}}" class="active-image" width="355" height="150" mode="aspectFill"/>
+			</block>
+	</view>-->
+	<view class="yx fixed">
+      <text class="index-title">每日优选 > </text>
+			<view class="fixed">
+			<navigator wx:for="{{yx}}" wx:key="item.goods_id" url="../goods/goods?type={{item.goods_id}}&title={{item.goods_name}} ">
+				  	<view class="yx-list">
+							<image src="{{item.goods_thumb}}"/>
+							<text class="yx-title">{{item.goods_name}}</text>
+							<text class="yx-price">￥{{item.shop_price}}</text>
+					 </view>
+				</navigator>
+			</view>
+  </view>
+	<view class="gl">
+      <text class="index-title">每日攻略 > </text>
+			<view class="fixed">
+				<navigator wx:for="{{gl}}" wx:key = "{{item.article_id}}" url="../item/item?type={{ item.article_id }}&title={{ item.title }}&cat_id={{item.cat_id}}" hover-class="none">
+				  	<view class="gl-list">
+								<view class="article-header">
+										<view class="article-classify">
+												<text class="label">原创文章</text>{{item.tag}}
+										</view>
+										<view class="article-author">
+												<image class="avatar" src="{{item.avatar_url}}"/>
+												<text class="nickname">{{item.author}}</text>
+										</view>
+              	 </view>
+								 <image class="article-image" src="{{item.article_thumb}}"/>
+								 <view class="article-title">
+										<text class="article-title-text">{{item.title}}</text>
+										<view class="shoplink-like">
+											<image catchtap="tapName" id="{{goods_id}}" class="shoplink-heart" data-src="{{item.is_collected}}" src="{{item.is_collected ? '../../imgs/heart.png' : '../../imgs/heart1.png'}}"/>
+											<text class="heare-val">{{item.collect_num}}</text>
+										</view>
+                </view>
+					 </view>
+				 </navigator>
+			</view>
+  </view>
+
+	<view class="xh">
+		<text class="index-title">猜你喜欢 > </text>
+		<view class="fixed xh-box">
+			<navigator wx:for="{{xh}}" wx:key="item.goods_id" url="../goods/goods?type={{item.goods_id}}&title={{item.goods_name}} ">
+				<view class="xh-list">
+					<image src="{{item.goods_thumb}}"/>
+					<text class="xh-title">{{item.goods_name}}</text>
+					<text class="xh-price">￥{{item.shop_price}}</text>
+				</view>
+			</navigator>
+		</view>
+	</view>

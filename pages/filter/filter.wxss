@@ -1,0 +1,42 @@
+
+.choose-title{
+	position: fixed;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 80rpx;
+	text-align: center;
+	border-top:1px solid #999;
+	background-color: #fff;
+	font-size: 15px;
+	z-index: 99;
+	display: flex;
+	flex-direction: row;
+	padding:20rpx 0;
+	box-sizing: border-box;
+	box-shadow: 1px 1px 2px #f5f5f5;
+}
+.choose-title text.on{
+	color: #ff5777;
+}
+.choose-title text{
+	flex: 1;
+	line-height: 40rpx;
+}
+.title-center{
+	box-sizing: border-box;
+	border-left:1px solid #999;
+	border-right:1px solid #999;
+}
+.search{
+	position: absolute;
+	top: 15rpx;
+	right: 30rpx;
+}
+.header-img{
+	width: 100%;
+	height:320rpx;
+	display: block;
+	padding-top:80rpx;
+}
+

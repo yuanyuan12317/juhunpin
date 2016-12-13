@@ -1,0 +1,16 @@
+    <view class="classify-search">
+        <icon type="search" size="20"/>
+        <input  placeholder="搜索你所想..." auto-focus />
+    </view>
+    <view class="classify-box">
+        <block wx:for="{{fl}}" wx:key = "{{item.cat_id}}">
+            <view class="classify-item">
+                <text>{{item.cat_name}}</text>
+                <view class="fixed">
+                    <navigator url="../filter/filter?category_id={{item.cat_id}}" wx:for="{{item.child}}" wx:key = "{{item.cat_id}}">
+                        <image src="{{item.cat_icon}}"  />
+                    </navigator> 
+                </view>
+            </view>
+        </block> 
+    </view>
