@@ -1,7 +1,9 @@
 <view class="container">  
   <view class="usermotto">  
     <text class="user-motto">欢迎登录<text style="color:#ff5777;">聚婚品</text></text>
-    <text class="register">注册</text>  
+    <navigator url="../register/register">
+        <text class="register">注册</text>  
+    </navigator>
     <label for="">
         <text>用户名：</text>
         <input class="inputForm" type="text" bindinput="userNameInput" placeholder="请输入用户名"/>  

@@ -1,0 +1,61 @@
+.usermotto{
+  position: relative;
+}
+.user-motto{
+  display: block;
+  text-align: center;
+  margin: 150rpx 0 100rpx;
+  font-size: 20px;
+}
+input{
+  display: inline-block;
+  width: 500rpx;
+  height: 80rpx;
+  border-bottom: 1px solid #999;
+  text-align: left;
+  line-height: 80rpx;
+  vertical-align: middle;
+}
+label{
+  display: block;
+  margin: 0 0 50rpx;
+  font-size: 15px;
+  padding: 0 30rpx;
+  /* text-align: center; */
+}
+label text{
+  display: inline-block;
+  height: 80rpx;
+  line-height: 80rpx;
+
+}
+.forget{
+  font-size: 14px;
+  color: #999;
+  display: block;
+  text-align: center;
+  margin-bottom: 50rpx;
+
+}
+button{
+  width: 500rpx;
+  background-color: #ff5777;
+  color: #fff;
+}
+.getVer{
+  display: inline-block;
+  width: 300rpx;
+  height: 80rpx;
+  margin-left: 40rpx;
+  background-color: #fff;
+  color: #666;
+  vertical-align: middle;
+  border: none;
+}
+.register{
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  font-size: 14px;
+  color: #999;
+}
