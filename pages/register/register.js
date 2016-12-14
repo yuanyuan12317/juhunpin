@@ -5,7 +5,10 @@ Page({
 		userPassword:"",
 		userpwd:"",
 		id_token:"",
-		response:""
+		response:"",
+		disabled:false,
+		verifycode:"",
+		buttonText:"获取验证码"
 	},
 	userNameInput:function(e){
 		this.setData({
@@ -17,8 +20,12 @@ Page({
 			userPassword:e.detail.value
 		})
 	},
+	userVerInput:function(){
+		this.setData({
+			verifycode:e.detail.value
+		})
+	},
 	verification:function(){
-		console.log((/^1[34578]\d{9}$/.test(this.data.userName)))
 		var _self = this;
 		if(this.data.userName && (/^1[34578]\d{9}$/.test(this.data.userName))){
 			wx.request({
@@ -33,10 +40,36 @@ Page({
 			    },  
 			    success:function(res){
 			    	console.log(res.data)
-			    	// var user = wx.getStorageSync('user')||{};
-			    	// user = res.data.data;
-			    	// wx.setStorageSync('user', user);
-			    	// wx.redirectTo({url: "../my/my"})
+			    	if(res.data.error == 1){
+			    		wx.showToast({
+						  title: res.data.message,
+						  duration: 2000
+						})
+			    	}else{
+			    		console.log(2222)
+			    		var wait = 60;
+					    function time() {
+					        if (wait == 0) {
+					        	console.log(111)
+					            _self.setData({
+					    			disabled:true,
+					    			buttonText:"获取验证码"
+					    		})      
+					            wait = 60;
+					        } else {
+					        	console.log(333)
+					           	_self.setData({
+					    			disabled:false,
+					    			buttonText:"重新发送(" + wait + ")"
+					    		})
+					            wait--;
+					            setTimeout(function () {
+					                time()
+					            },1000)
+					        }
+					    }
+					    time();
+			    	}
 			    }  
 			})
 		}else{
@@ -53,24 +86,38 @@ Page({
 	},
 	logIn:function(){
 		var that = this;
-		wx.request({
-			url: 'http://api.7xyun.com/api/login',  
-			header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-		    method: 'POST',
-		    data: {  
-			   mobile: this.data.userName,  
-		       password: this.data.userPassword,  
-		    },  
-		    success:function(res){
-		    	console.log(res.data)
-		    	var user = wx.getStorageSync('user')||{};
-		    	user = res.data.data;
-		    	wx.setStorageSync('user', user);
-		    	wx.redirectTo({url: "../my/my"})
-		    }  
-		})
+
+		if(this.data.userName && (/^1[34578]\d{9}$/.test(this.data.userName))
+			&&this.data.userPassword&&this.data.userpwd&&this.data.userpwd===this.data.userPassword){
+
+			wx.request({
+				url: 'http://api.7xyun.com/api/register',  
+				header: {
+	                'content-type': 'application/x-www-form-urlencoded'
+	            },
+			    method: 'POST',
+			    data: {  
+				   mobile: this.data.userName,  
+			       password: this.data.userPassword, 
+			       verifycode:this.data.verifycode 
+			    },  
+			    success:function(res){
+			    	console.log(res.data)
+			    	// var user = wx.getStorageSync('user')||{};
+			    	// user = res.data.data;
+			    	// wx.setStorageSync('user', user);
+			    	if(res.data.error == 1){
+			    		wx.showToast({
+						  title: res.data.message,
+						  duration: 2000
+						})
+			    	}else{
+			    		wx.redirectTo({url: "../login/login"})
+			    	}
+			    	
+			    }  
+			})
+		}	
 	}
 
 }) 
