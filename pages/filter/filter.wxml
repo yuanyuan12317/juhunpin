@@ -8,13 +8,13 @@
  scroll-y="true" bindscrolltoupper="pullDownRefresh" bindscrolltolower="pullUpLoad" >
     <view class="xh">
         <view class="fixed xh-box" style="padding-bottom:0">
-            <block wx:for="{{xh}}" wx:key="item.goods_id">
-                    <view class="xh-list">
-                        <image src="{{item.goods_thumb}}"/>
-                        <text class="xh-title">{{item.goods_name}}</text>
-                        <text class="xh-price">￥{{item.shop_price}}</text>
-                    </view>
-            </block>
+            <navigator wx:for="{{xh}}" wx:key="item.goods_id" url="../goods/goods?type={{item.goods_id}}&title={{item.goods_name}} ">
+                <view class="xh-list">
+                    <image src="{{item.goods_thumb}}"/>
+                    <text class="xh-title">{{item.goods_name}}</text>
+                    <text class="xh-price">￥{{item.shop_price}}</text>
+                </view>
+            </navigator>
         </view>
     </view>
 </scroll-view>
