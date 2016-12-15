@@ -9,7 +9,7 @@
     "pages/filter/filter",
     "pages/login/login",
     "pages/register/register",
-    "pages/item/item"
+    "pages/article/article"
   ],
   "window":{
     "backgroundTextStyle":"light",

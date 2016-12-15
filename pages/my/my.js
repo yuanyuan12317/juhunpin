@@ -54,9 +54,13 @@ Page({
 		  success : function(res) {
 		    if (res.confirm) {
 		      try {
+
 				  wx.removeStorageSync('user');
 				  // wx.navigateTo({url: "../index/index"})
-				  wx.onHide();
+				  var user = wx.getStorageSync("user");
+				  console.log(user);
+				  // wx.redirectTo(OBJECT)
+				  wx.redirectTo({url: "../my/my"})
 				} catch (e) {
 				 
 				}

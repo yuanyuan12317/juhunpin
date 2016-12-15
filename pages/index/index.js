@@ -1,14 +1,8 @@
+var util = require("../../utils/util.js")
+var config = require("../../utils/config.js")
 var app = getApp();
-
 Page({
 	data:{reqnum:0},
-	tapName: function(event) {
-			// console.log(this.data.gl["is_like"]);
-			// this.gl["is_like"] = !this.data.gl["is_like"];
-			console.log(event.target.dataset["src"]);
-			console.log(event.target.src)
-			return false;
-		},
 	slider:function(order){
 		var _this = this;
 		for (var i = 0; i < order.length; ++i) {
@@ -21,70 +15,157 @@ Page({
 			}
     	}
 	},
-	request:function(url,method,key){
-		var _this = this;
-		wx.request({
-            url: url, //仅为示例，并非真实的接口地址
-            data: {},
-            header: {
-                'Content-Type': 'application/json'
-            },
-			method:method,
-            success: function(res) {
-                var data = res.data.data || [];
-				switch (key) {
-					case "sliderImages":
-						_this.setData({
-							sliderImages:data,
-							reqnum:++_this.data.reqnum
-						})
-						break;
-					case "dayNews":
-						_this.setData({
-							dayNews:data.arr_list||[],
-							toView: "w"+data.arr_list[0].article_id	,
-							reqnum:++_this.data.reqnum	
-						})
-						var order = [];
-						for(var i=0;i<data.arr_list.length;i++){
-							order.push("w"+data.arr_list[i].article_id);
-						}
-						setInterval(function(){
-							_this.slider(order);
-						},2000)
-						break;
-					case "hj":
-					console.log(data)
-						_this.setData({
-							yx:data.goods_list.arr_list||[],
-							gl:data.article_list.arr_list||[],
-							reqnum:++_this.data.reqnum	
-						})
-						break;
-					case 'like':
-						_this.setData({
-							xh:data.arr_list||[],
-							reqnum:++_this.data.reqnum		
-						})
-						break;
-				}
-				_this.data.reqnum == 4 && wx.hideToast();
-            }
-        })
-	},	
-
-	 onLoad: function(options) {
+	onLoad: function(options) {
+		 var _this = this;
+		 // wx.showToast({
+   //          title: '加载中',
+   //          icon: 'loading',
+   //          duration:100000
+   //      })
+		 // this.getShowImg();
+		 // this.getDayNews();
+		 // this.getHj();
+		 // this.likeGoods();
+	},
+	onShow: function(options){
 		 var _this = this;
 		 wx.showToast({
             title: '加载中',
             icon: 'loading',
             duration:100000
         })
-		_this.request('http://api.7xyun.com/v3_1_0/index/adlist',"POST","sliderImages")
-		_this.request('http://api.7xyun.com/v3_1_0/index/daily',"POST","dayNews")
-		_this.request('http://api.7xyun.com/v3_1_0/index/list',"POST",'hj')
-		_this.request('http://api.7xyun.com/v3_1_0/index/likegoods',"POST","like")
-	}
+		 this.getShowImg();
+		 this.getDayNews();
+		 this.getHj();
+		 this.likeGoods();
+	},
+	// 轮播图
+	getShowImg: function () {
+	    let that = this;
+	    let options = {
+	      url: config.index.slider,
+	      method:"POST",
+	      data: {}
+	    }
+	    util.request(options, function (res) {
+	      let sliderImages =  res.data.data||[];   
+	      that.setData({ sliderImages: sliderImages })
+	      wx.hideToast();
+	    })
+  	},
+  	// 每日播报
+  	getDayNews: function(){
+  		let that = this;
+	    let options = {
+	      url: config.index.dayNews,
+	      method:"POST",
+	      data: {}
+	    }
+	    util.request(options, function (res) {
+	        let dayNews = res.data.data.arr_list||[]; 
+	        let toView = "w"+dayNews[0].article_id; 
+	        that.setData({ 
+	      	  dayNews : dayNews,
+			  toView : toView
+	        })
+	        var order = [];
+			for(var i=0;i<dayNews.length;i++){
+				order.push("w"+dayNews[i].article_id);
+			}
+			setInterval(function(){
+				that.slider(order);
+			},3000)
+			wx.hideToast();
+	    })
+  	},
+  	//每日优选、攻略
+  	getHj: function(){
+  		let that = this;
+  		let user = wx.getStorageSync('user');
+  		let options = {
+	      url: config.index.hj,
+	      method:"POST",
+	      header: {
+                'content-type': 'application/x-www-form-urlencoded'
+          },
+	      data: {}
+	    }
+  		if(user){
+  			options.data.token = user.token;
+  		}
+	   console.log(options)
+	    util.request(options, function (res) {
+	      let data =  res.data.data||[];   
+	      console.log(data)
+	      that.setData({ 
+	      	yx: data.goods_list.arr_list||[],
+			gl: data.article_list.arr_list||[],
+	      })
+	      wx.hideToast();
+	    })
+  	},
+  	//也许喜欢
+  	likeGoods: function(){
+  		let that = this;
+  		let options = {
+	      url: config.index.likeGoods,
+	      method:"POST",
+	      header: {
+                'content-type': 'application/x-www-form-urlencoded'
+          },
+	      data: {
+	      	page_number:10,
+	      	now_page:1
+	      }
+	    };
+	    util.request(options, function (res) {
+	      that.setData({ 
+	      	xh:res.data.data.arr_list||[],
+	      })
+	      wx.hideToast();
+	    })
+  	},
+  	tapName: function(event) {
+  		let that = this;
+  		let user = wx.getStorageSync('user');
+  		console.log(event)
+			if(user){
+				console.log(event.target.dataset["src"]);
+				var type = 1;
+				if(event.target.dataset["src"]=="true"){
+					console.log(event.target.dataset["src"]);
+					type = 2;
+				}
+				let options = {
+					url: config.index.collectArticle,
+					method:"POST",
+					header: {
+		                'content-type': 'application/x-www-form-urlencoded'
+		          	},
+		          	data: {
+				      	token:user.token,
+				      	article_id:event.target.id,
+				      	opration:type
+				    }
+				};
+				util.request(options, function (res) {
+			     	console.log(res.data)
+			      	wx.showToast({
+			            title: res.data.message,
+			            duration:1000
+			        })
+			        wx.redirectTo({
+						url:"../index/index"
+					})
+			    })
+				
+			}else{
+				wx.navigateTo({
+					url:"../login/login"
+				})
+			}
+			return false;
+	},
 })
 
 

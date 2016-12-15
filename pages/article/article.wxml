@@ -1,0 +1,35 @@
+<image class="header-img" src="{{headerImg}}"/>
+<text class="article-tilte">{{title}}</text>
+<view class="header-article">
+    <view class="article-author">
+        <text class="label">原创文章</text>
+        <image class="avatar-pic" src="{{authorPic}}" mode=""/>
+        <text class="author-nickname">{{authorName}}</text>
+    </view>
+    <view class="article-date">
+        <text>{{pubtime}}</text>
+    </view>
+</view>
+<view class="section_detail">
+    <import src="../../wxParse/wxParse.wxml"/> 
+    <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
+</view>
+<view class="also-like">
+    <view class="also-like-title">
+        <view class="line"></view>
+        <text>你也许还喜欢</text>
+    </view>
+    <scroll-view class="sv-like" scroll-x="true" style="width: 100%">
+        <view class="inner">
+            <navigator wx:for="{{svLike}}" url="../item/item?type={{ item.article_id }}&title={{ item.article_title}}&cat_id={{item.cat_id}}" hover-class="none">
+                <view class="sv-like-item">
+                    <image src="{{item.article_thumb}}"/>
+                    <text>{{item.title}}</text>
+                </view>
+            </navigator>
+        </view>
+    </scroll-view>
+</view>    
+    

@@ -33,7 +33,10 @@ Page({
 		    	var user = wx.getStorageSync('user')||{};
 		    	user = res.data.data;
 		    	wx.setStorageSync('user', user);
+		    	user = wx.getStorageSync('user')||{};
+		    	console.log(user);
 		    	wx.redirectTo({url: "../my/my"})
+		    	// wx.navigateBack({delta: 1})
 		    }  
 		})
 	}

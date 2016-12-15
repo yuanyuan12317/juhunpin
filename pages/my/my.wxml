@@ -49,7 +49,7 @@
 	    </view>
         <view class="gl" hidden="{{num==1 ? false : true}}">
 			<view class="fixed">
-				<navigator wx:for="{{gl}}" wx:key = "{{item.article_id}}" url="../item/item?type={{ item.article_id }}&title={{ item.title }}&cat_id={{item.cat_id}}" hover-class="none">
+				<navigator wx:for="{{gl}}" wx:key = "{{item.article_id}}" url="../article/article?type={{ item.article_id }}&title={{ item.title }}&cat_id={{item.cat_id}}" hover-class="none">
 				  	<view class="gl-list">
                         <view class="article-header">
                             <view class="article-classify">

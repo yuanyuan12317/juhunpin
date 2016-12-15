@@ -1,12 +1,12 @@
 <view class="choose-title"> 
-	<navigator  url="../hj/hj" hover-class="none"><text class="hj on">合集</text></navigator> | 
-    <navigator  url="../choose/choose" hover-class="none"><text class="dp">单品</text></navigator>
+	<text class="hj on">合集</text> | 
+    <text bindtap="changeContent" class="dp">单品</text>
     <icon  class="search" type="search" size="15" color="#666"/>
 </view>
 <image class="header-img" mode="aspectFill" src="{{headerImg}}"/>
 <view class="gl">
             <view class="fixed">
-                <navigator wx:for="{{gl}}" wx:key = "{{item.article_id}}" url="../item/item?type={{ item.article_id }}&title={{ item.title }}&cat_id={{item.cat_id}}" hover-class="none">
+                <navigator wx:for="{{gl}}" wx:key = "{{item.article_id}}" url="../article/article?type={{ item.article_id }}&title={{ item.title }}&cat_id={{item.cat_id}}" hover-class="none">
                     <view class="gl-list">
                         <view class="article-header">
                             <view class="article-classify">

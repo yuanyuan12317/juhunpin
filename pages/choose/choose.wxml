@@ -1,17 +1,17 @@
 <view class="choose-title"> 
-	<navigator  url="../hj/hj" hover-class="none"><text class="hj">合集</text></navigator> | 
-    <navigator  url="../choose/choose" hover-class="none"><text class="dp on">单品</text></navigator>
+	<text bindtap="changeContent" class="hj">合集</text> |
+    <text class="dp on">单品</text>
     <icon  class="search" type="search" size="15" color="#666"/>
 </view>
 <image class="header-img" mode="aspectFill" src="{{headerImg}}"/>
 <view class="xh">
     <view class="fixed xh-box">
-        <block wx:for="{{xh}}" wx:key="item.goods_id">
-                <view class="xh-list">
-                    <image src="{{item.goods_thumb}}"/>
-                    <text class="xh-title">{{item.goods_name}}</text>
-                    <text class="xh-price">￥{{item.shop_price}}</text>
-                </view>
-        </block>
+        <navigator wx:for="{{xh}}" wx:key="item.goods_id" url="../goods/goods?type={{item.goods_id}}&title={{item.goods_name}} ">
+            <view class="xh-list">
+                <image src="{{item.goods_thumb}}"/>
+                <text class="xh-title">{{item.goods_name}}</text>
+                <text class="xh-price">￥{{item.shop_price}}</text>
+            </view>
+        </navigator>
     </view>
 </view>

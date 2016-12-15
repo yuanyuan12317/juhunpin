@@ -1,7 +1,61 @@
+@import "/wxParse/wxParse.wxss";
 .header-img{
     width:100%;
     height:375rpx;
     display: block;
+    padding-top: 0;
+}
+.article-tilte{
+    display: block;
+    font-size: 16px;
+    color: #666;
+    font-weight: 600;
+    padding-left: 30rpx;
+    margin-top: 30rpx;
+}
+.header-article{
+    width: 100%;
+    height: 80rpx;
+    padding:0 30rpx;
+    color: #999;
+    background-color:#fff;
+    box-sizing: border-box;
+    margin-bottom: 20rpx; 
+}
+.header-article .article-author{
+    float: left;
+    height: 80rpx;
+
+}
+.header-article  .label{
+    box-sizing: border-box;
+    display: inline-block;
+    color: #999;
+    background-color: #eaeaea;
+    font-size: 12px;
+    height: 45rpx;
+    line-height: 45rpx;
+    border-radius: 8rpx;
+    padding: 0 20rpx;
+    margin-right: 20rpx;
+    text-align: center;
+}
+ .avatar-pic{
+    height: 45rpx;
+    width: 45rpx;
+    border-radius:45rpx;
+    margin-right: 10rpx;
+    vertical-align: middle;
+}
+.author-nickname{
+    display: inline-block;
+    color: #999;
+    font-size: 12px;
+}
+.article-date{
+    float: right;
+    font-size: 14px;
+    line-height: 80rpx;
 }
 .section_detail {
     width: 100%;
@@ -9,6 +63,11 @@
     font-size: 14px;
     box-sizing: border-box;
 }
+
+.wxParse-h1{
+    display: none!important;
+}
+
 .section_detail .article-title {
     width: 100%;
     display: inline-block;
@@ -44,8 +103,8 @@
     box-sizing: border-box;
 }
 .shoplink-goods-des .shoplink_img {
-    width: 160rpx;
-    height: 160rpx;
+    width: 160rpx!important;
+    height: 160rpx!important;
     float: left;
     display: block;
 }
@@ -53,7 +112,7 @@
     margin-left: 180rpx;
     padding-right: 90rpx;
 }
-.shoplink_des_title {
+.shoplink_des_title, .wxParse-h2 {
     font-size: 15px;
     font-weight: normal;
     color: #555;
@@ -70,17 +129,22 @@
     bottom: 40rpx;
     font-weight: bold;
 }
+.price_now view{
+    font-style: normal;
+    color: #666;
+}
 .shoplink_btn{
     position: absolute;
     color: #555;
     top: 50%;
     margin-top: - 6px;
     right: 20rpx;
-    width: 13px;
-    height: 8px;
-    border: 1px solid #ff5777;
-    transform: rotate(-90deg) scale(1.2);
-    -webkit-transform: rotate(90deg) scale(1.2);
+    width: 14px;
+    height: 24px;
+    background: url(../../imgs/arrow-r.png) no-repeat;
+    background-size: contain; 
+   /*  transform: rotate(-90deg) scale(1.2);
+    -webkit-transform: rotate(90deg) scale(1.2); */
 }
 .shoplink-goods-link {
     height: 60rpx;
@@ -89,7 +153,7 @@
     background-color: #F6F6F6;
     border-radius: 8rpx;
 }
-.shoplink-goods-link view {
+.shoplink-goods-link .shoplink-tb,.shoplink-goods-link .shoplink-like {
     float: left;
     width: 50%;
     text-align: center;
@@ -98,14 +162,35 @@
     line-height: 60rpx;
     font-size: 14px;
 }
+.shoplink-heart{
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background: url(../../imgs/heart1.png) no-repeat;
+    background-size: contain;
+    margin-top: -3px;
+    margin-right: 10rpx;
+    vertical-align: middle;
+} 
+
+.shoplink-car{
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background: url(../../imgs/shop-car1.png) no-repeat;
+    background-size: contain;
+    margin-top: -3px;
+    margin-right: 10rpx;
+    vertical-align: middle;
+}
 .shoplink-like{
     box-sizing: border-box;
     border-right:1px solid #fff;
 }
 .shoplink-goods-link image {
     display: inline-block;
-    width: 17px;
-    height: 17px;
+    width: 17px!important;
+    height: 17px!important;
     margin-right: 0.2rem;
     vertical-align: middle;
     border:1px solid #ff5777;
@@ -175,3 +260,8 @@
 	overflow:hidden;
     background: rgba(0,0,0,0.2);
 }
+
+
+
+
+
