@@ -93,14 +93,21 @@ Page({
   		if(user){
   			options.data.token = user.token;
   		}
-	   console.log(options)
 	    util.request(options, function (res) {
-	      let data =  res.data.data||[];   
+	      let data =  res.data.data||[];  
+	      let gl = data.article_list.arr_list; 
 	      console.log(data)
+	      var obj = {};
+	      for(var i=0;i<gl.length;i++){
+	      		obj[gl[i].article_id]= [gl[i].is_collected,gl[i].collect_num]
+	      }
 	      that.setData({ 
 	      	yx: data.goods_list.arr_list||[],
-			gl: data.article_list.arr_list||[],
+			gl: gl||[],
+			like:obj
 	      })
+
+	      console.log(that.data.like)
 	      wx.hideToast();
 	    })
   	},
@@ -135,6 +142,14 @@ Page({
 				if(event.target.dataset["src"]=="true"){
 					console.log(event.target.dataset["src"]);
 					type = 2;
+					// that.setData({
+					// 	like[event.target.id]:[false,this.data.like[event.target.id][1]--]
+					// })
+				}else{
+					type = 1;
+					// that.setData({
+					// 	like[event.target.id]:[true,this.data.like[event.target.id][1]++]
+					// })
 				}
 				let options = {
 					url: config.index.collectArticle,

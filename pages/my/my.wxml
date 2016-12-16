@@ -4,7 +4,7 @@
         <text class="user-dialogue" bindtap = "showTel">联系客服</text>
     </view>
     <view class="user-info">
-        <navigator url="../login/login"><image src="{{avatarUrl}}" alt=""/></navigator>
+        <navigator url="../qa/qa"><image src="{{avatarUrl}}" alt=""/></navigator>
         <text>{{nickName}}</text>
         <text>我的婚期：{{weddingday}}</text>
     </view>
@@ -38,13 +38,13 @@
     <view class="user-collect-box">
        	<view class="xh"  hidden="{{num==0  ? false : true}}">
             <view class="fixed xh-box">
-                <block wx:for="{{xh}}" wx:key="item.goods_id">
+                <navigator wx:for="{{xh}}" wx:key="item.goods_id" url="../goods/goods?type={{item.goods_id}}&title={{item.goods_name}} ">
                         <view class="xh-list">
                             <image src="{{item.goods_thumb}}"/>
                             <text class="xh-title">{{item.goods_name}}</text>
                             <text class="xh-price">￥{{item.shop_price}}</text>
                         </view>
-                </block>
+                </navigator>
             </view>
 	    </view>
         <view class="gl" hidden="{{num==1 ? false : true}}">

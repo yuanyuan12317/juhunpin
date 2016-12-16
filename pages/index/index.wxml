@@ -59,8 +59,9 @@
 								 <view class="article-title">
 										<text class="article-title-text">{{item.title}}</text>
 										<view class="shoplink-like">
-											<image catchtap="tapName" id="{{item.article_id}}" class="shoplink-heart" data-src="{{item.is_collected}}" src="{{item.is_collected ? '../../imgs/heart.png' : '../../imgs/heart1.png'}}"/>
-											<text class="heare-val">{{item.collect_num}}</text>
+											<!-- <image catchtap="tapName" id="{{item.article_id}}" class="shoplink-heart" data-src="{{item.is_collected}}" src="{{item.is_collected ? '../../imgs/heart.png' : '../../imgs/heart1.png'}}"/> -->
+											<image catchtap="tapName" id="{{item.article_id}}" class="shoplink-heart" data-src="{{item.is_collected}}" src="{{like[item.article_id][0] ? '../../imgs/heart.png' : '../../imgs/heart1.png'}}"/>
+											<text class="heare-val">{{like[item.article_id][1]}}</text>
 										</view>
                 </view>
 					 </view>

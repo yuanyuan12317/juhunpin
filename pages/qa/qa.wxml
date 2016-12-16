@@ -1,0 +1,63 @@
+<view class="qa-header">
+    <view class="qa-nav">
+        <view class="qa-icon qa-fl fa fa-list-ul"></view>
+        <navigator href="#" class="nav-list qa-question on">问答</navigator>
+        <navigator href="#" class="nav-list qa-live">直播</navigator>
+        <view class="qa-icon qa-search fa fa-search"></view>
+    </view>
+    <view class="qa-header-img">
+        <image src="../../imgs/header.png" alt=""/>
+    </view>
+</view>
+<view class="qa-main">
+    <view class="qa-title">
+        热门问答 <text class="qa-title-en"> · Popular Questions</text>
+        <view class="qa-title-fl">
+            <navigator href="#" class="fl-list on">精选</navigator>
+            <navigator href="#" class="fl-list">最新</navigator>
+        </view>
+    </view>
+    <view class="qa-content" >
+        <block wx:for="{{qa}}" wx:key="{{item.question_id}}">
+            <view class="qa-list">
+                <view class="question">
+                    <text class="qu-time">{{item.datetime}}</text>
+                    <block wx:for="{{item.tags}}" wx:key="{{item.question_id}}">
+                        <text class="list-tag" style="background-color: #{{item.color}}">{{item.keywords}}</text>
+                    </block>
+                    <text class="qu-title">{{item.title}}</text>
+                    <text class="qu-text">{{item.content}}</text>
+                    <view class="qa-num">
+                        <text class="qu-num">{{item.replies}}个回答</text> 
+                        <!-- <view class="look-num"> -->
+                            <!-- <view class="fa fa-eye"></view> -->
+                            <text class="look-num">{{item.views}}</text>
+                        <!-- </view> -->
+                    </view>
+                </view>
+                <view class="answer">
+                    <view class="an-content">
+                        <image class="an-img" src="{{item.reply.user_picture}}" alt=""/>
+                        <view class="an-audio" data-src="{{item.reply.url}}" data-num="1">
+                            <view class="an-voice">
+                                <view class="v3"></view>
+                            </view>
+                        </view>
+                        <text class="an-audio-time">{{item.reply.duration}}"</text>
+                    </view>
+                    <view class="an-person">
+                        <text class="person-name">{{item.reply.user_name}}</text>
+                        <text class="person-title">{{item.reply.title}}</text>
+                    </view>
+                    <view class="an-like">
+                        <view class="fa fa-heart-o"> </view>23
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+<!-- <audio  id="audio" data-nu="" style="display:none" preload="auto"  src="">
+    <source src="http://a.f265.com/project/shake-money/img/shake.mp3" type="audio/mpeg">
+    您的浏览器不支持，请下载聚婚品app
+</audio> -->

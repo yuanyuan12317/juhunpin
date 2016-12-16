@@ -32,8 +32,8 @@
     </view>
     <view class="goods-footer">
         <view class="goods-like">
-            <image src="../../imgs/heart.png"></image>
-            <text>收藏</text>    
+            <image src="{{goodDetail.is_collected ? '../../imgs/heart.png' : '../../imgs/heart1.png'}}"></image>
+            <text>{{goodDetail.is_collected ? '已收藏' : '收藏'}}</text>    
         </view>
         <view class="goods-link">去购买</view>
     </view>

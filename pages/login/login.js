@@ -1,3 +1,6 @@
+var util = require("../../utils/util.js")
+var config = require("../../utils/config.js")
+
 var app = getApp();
 Page({
 	data:{
@@ -17,9 +20,9 @@ Page({
 		})
 	},
 	logIn:function(){
-		var that = this;
-		wx.request({
-			url: 'http://api.7xyun.com/api/login',  
+		let that = this;
+		let options = {
+			url: config.login.login,  
 			header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
@@ -27,18 +30,37 @@ Page({
 		    data: {  
 			   mobile: this.data.userName,  
 		       password: this.data.userPassword,  
-		    },  
-		    success:function(res){
-		    	console.log(res.data)
-		    	var user = wx.getStorageSync('user')||{};
-		    	user = res.data.data;
-		    	wx.setStorageSync('user', user);
-		    	user = wx.getStorageSync('user')||{};
-		    	console.log(user);
-		    	wx.redirectTo({url: "../my/my"})
-		    	// wx.navigateBack({delta: 1})
-		    }  
+		    }
+		}
+		util.request(options,function(res){
+			var user = wx.getStorageSync('user')||{};
+			user = res.data.data;
+			wx.setStorageSync('user', user);
+			wx.redirectTo({url: "../my/my"})
 		})
+
+
+		// wx.request({
+		// 	url: 'http://api.7xyun.com/api/login',  
+		// 	header: {
+  //               'content-type': 'application/x-www-form-urlencoded'
+  //           },
+		//     method: 'POST',
+		//     data: {  
+		// 	   mobile: this.data.userName,  
+		//        password: this.data.userPassword,  
+		//     },  
+		//     success:function(res){
+		//     	console.log(res.data)
+		//     	var user = wx.getStorageSync('user')||{};
+		//     	user = res.data.data;
+		//     	wx.setStorageSync('user', user);
+		//     	user = wx.getStorageSync('user')||{};
+		//     	console.log(user);
+		//     	wx.redirectTo({url: "../my/my"})
+		//     	// wx.navigateBack({delta: 1})
+		//     }  
+		// })
 	}
 
 }) 

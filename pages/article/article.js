@@ -12,18 +12,23 @@ Page({
         svLike:[]
     },
     onLoad: function(options) {
-        let that = this;
+        this.setData({
+          title:options.title
+        })
         let articleId = options.type;
         let data = {
              cat_id : options.cat_id,
              article_id : options.type
             }
-        wx.setNavigationBarTitle({
-            title:options.title
-        })
         this.getAlsoLike(data);
         this.getArticleHtml(articleId);
-  },
+    },
+    onReady:function(options){
+        let that = this;
+        wx.setNavigationBarTitle({
+            title:that.data.title
+        })
+    },
   getAlsoLike:function(data){
     let that = this;
     let options = {

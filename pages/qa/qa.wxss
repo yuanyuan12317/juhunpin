@@ -1,0 +1,193 @@
+.qa-header {
+  width: 100%;
+  height: 420rpx;
+  background-color: #fff; }
+
+.qa-nav {
+  width: 100%;
+  position: relative;
+  padding: 0 175rpx;
+  line-height: 90rpx; }
+  .qa-nav .nav-list {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 175rpx;
+    text-align: center;
+    font-size: 16px;
+    height: 100%; }
+    .qa-nav .nav-list.qa-question {
+      margin-right: 30rpx; }
+    .qa-nav .nav-list.on {
+      color: #F63C64;
+      border-bottom: 2px solid #F63C64; }
+  .qa-nav .qa-icon {
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    line-height: 90rpx;
+    font-size: 20px;
+    color: #666;
+    font-weight: lighter; }
+  .qa-nav .qa-fl {
+    left: 30rpx; }
+  .qa-nav .qa-search {
+    right: 30rpx; }
+
+.qa-header-img {
+  width: 100%;
+  height:330rpx; }
+  .qa-header-img image {
+    width: 100%;
+    height:100%; }
+
+.qa-main {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 0 30rpx 10rpx; }
+
+.qa-title {
+  line-height: 110rpx;
+  font-size: 16px; }
+  .qa-title .qa-title-en {
+    font-size: 12px;
+    color: #BCBCBC; }
+  .qa-title .qa-title-fl {
+    float: right; }
+    .qa-title .qa-title-fl navigator {
+      color: #787878; }
+      .qa-title .qa-title-fl navigator:first-child {
+        border-right: 1px solid #BCBCBC;
+        padding-right: 15rpx; }
+        .qa-title .qa-title-fl navigator:last-child {
+        padding-left: 15rpx; }
+      .qa-title .qa-title-fl navigator.on {
+        color: #F63C64; }
+
+.qa-content {
+  width: 100%; }
+
+.qa-list {
+  padding: 30rpx 0 0 30rpx;
+  margin-bottom: 30rpx;
+  border-radius: 8rpx;
+  border: 1px solid #BCBCBC;
+  font-size: 14px;
+  color: #787878; }
+  .qa-list .question {
+    padding-right: 30rpx;
+    border-bottom: 1px solid #BCBCBC; }
+  .qa-list .answer {
+    padding: 20rpx 0;
+    position: relative; }
+    .qa-list .answer .an-content {
+      height: 77rpx;
+      line-height: 77rpx;
+      margin-bottom: 20rpx; }
+      .qa-list .answer .an-content .an-img {
+        width: 68rpx;
+        height: 68rpx;
+        border-radius: 68rpx;
+        vertical-align: middle; }
+    .qa-list .answer .an-person .person-name {
+      color: #000;
+      display: inline-block; }
+    .qa-list .answer .an-person .person-title {
+      margin-left: 20rpx; }
+    .qa-list .answer .an-like {
+      position: absolute;
+      right: 30rpx;
+      bottom: 20rpx; }
+      .qa-list .answer .an-like text {
+        margin-right: 10rpx; }
+
+.an-audio {
+  position: relative;
+  display: inline-block;
+  line-height: 77rpx;
+  width: 404rpx;
+  height: 77rpx;
+  margin: 0 20rpx;
+  vertical-align: middle; }
+
+.an-audio:after {
+  content: "";
+  position: absolute;
+  width: 404rpx;
+  height: 78rpx;
+  top: 0;
+  left: 0;
+  vertical-align: middle;
+  background: url("../../imgs/react.png") no-repeat;
+  background-size: contain;
+  z-index: 696; }
+
+.an-voice {
+  position: absolute;
+  top: 10rpx;
+  left: 20rpx;
+  z-index: 697; }
+
+.an-voice i {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx; }
+
+.v1 {
+  background: url("../img/voice1.png") no-repeat;
+  background-size: contain; }
+
+.v2 {
+  background: url("../img/voice2.png") no-repeat;
+  background-size: contain; }
+
+.v3 {
+  background: url("../img/voice3.png") no-repeat;
+  background-size: contain; }
+
+.an-audio-time {
+  color: #999; }
+
+.list-own {
+  float: right;
+  color: #bcbcbc; }
+  .list-own i {
+    font-style: normal;
+    font-size: 15px;
+    color: #666; }
+
+.list-tag {
+  padding: 6rpx 8rpx;
+  background-color: #F9C542;
+  color: #fff;
+  border-radius: 8rpx;
+  margin-left: 20rpx; }
+
+.qu-title {
+  display: block;
+  line-height: 62rpx;
+  color: #000;
+  font-size: 16px;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow: hidden; }
+
+.qu-text {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; }
+
+.qa-num {
+  margin-top: 30rpx; }
+
+.look-num {
+  margin-left: 35rpx;line-height: 60rpx;
+}
+  .look-num text {
+    margin-right: 20rpx; }
+

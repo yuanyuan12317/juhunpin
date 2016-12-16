@@ -1,9 +1,10 @@
+var util = require("../../utils/util.js")
+var config = require("../../utils/config.js")
+
 Page({
-	data:{
-	},
+	data:{},
 	onLoad :function(options){
-		var that = this;
-        wx.setNavigationBarTitle({
+        this.setData({
             title:options.title
         })
         wx.showToast({
@@ -11,23 +12,36 @@ Page({
             icon: 'loading',
             duration:100000
         })
-
         var data = {good_id:options.type}
-        console.log(data)
-        wx.request({
-            url: 'http://api.7xyun.com/v2_1_1/goods/tb_detail', //仅为示例，并非真实的接口地址
-            data:data,
+        this.getGoodDetail(data);
+	},
+    onReady:function(options){
+        let that = this;
+        wx.setNavigationBarTitle({
+            title:that.data.title
+        })
+    },
+    getGoodDetail:function(data){
+        let that = this;
+        let user = wx.getStorageSync('user');
+        let options = {
+            url:config.goods.goodsDetail,
             method:"POST",
             header: {
                 'content-type': 'application/x-www-form-urlencoded'
             },
-            success: function(res) {
-                console.log(res.data)
-                that.setData({
-                    goodDetail:res.data.data
-                })
-                wx.hideToast();
-            }
+            data:data
+        };
+        if (user) {
+            options.token = user.token;
+        }
+        console.log(options)
+        util.request(options,function(res){
+            console.log(res.data)
+            that.setData({
+                goodDetail:res.data.data
+            })
+            wx.hideToast();
         })
-	}
+    }
 })

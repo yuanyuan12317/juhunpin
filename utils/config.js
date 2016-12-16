@@ -15,8 +15,18 @@ module.exports = {
         goods:"http://api.7xyun.com/v3_1_0/goods/items",
         article:"http://api.7xyun.com/v3_1_0/article/articlelist"
     },
+    goods:{
+        goodsDetail:"http://api.7xyun.com/v2_1_1/goods/tb_detail"
+    },
     classify:{
-        classify:"http://api.7xyun.com/v2_1_1/goods/goodscate"
+        classify:"http://api.7xyun.com/v2_1_1/goods/goodscate",
+        filter:"http://api.7xyun.com/v2_1_0/goods/goodslist"
+    },
+    login:{
+        login:'http://api.7xyun.com/api/login'
+    },
+    qa:{
+        question:"http://api.7xyun.com/v4_1_0/ask/list"
     },
     clubApi: {
         put: 'https://api.wxappclub.com/put',

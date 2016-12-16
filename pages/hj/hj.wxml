@@ -1,31 +1,35 @@
 <view class="choose-title"> 
-	<text class="hj on">合集</text> | 
-    <text bindtap="changeContent" class="dp">单品</text>
+	<text class="hj on" style="margin-right:15rpx">合集</text> | 
+    <text bindtap="changeContent" style="margin-left:15rpx" class="dp">单品</text>
     <icon  class="search" type="search" size="15" color="#666"/>
 </view>
+
+<scroll-view style="height: {{windowHeight}}px; width: {{windowWidth}}px;"
+ scroll-y="true" bindscrolltoupper="pullDownRefresh" bindscrolltolower="pullUpLoad" >
 <image class="header-img" mode="aspectFill" src="{{headerImg}}"/>
 <view class="gl">
-            <view class="fixed">
-                <navigator wx:for="{{gl}}" wx:key = "{{item.article_id}}" url="../article/article?type={{ item.article_id }}&title={{ item.title }}&cat_id={{item.cat_id}}" hover-class="none">
-                    <view class="gl-list">
-                        <view class="article-header">
-                            <view class="article-classify">
-                                <text class="label">原创文章</text>{{item.tag}}
-                            </view>
-                            <view class="article-author">
-                                <image class="avatar" src="{{item.avatar_url}}"/>
-                                <text class="nickname">{{item.author}}</text>
-                            </view>
-                        </view>
-                        <image class="article-image" src="{{item.article_thumb}}"/>
-                        <view class="article-title">
-                            <text class="article-title-text">{{item.title}}</text>
-                            <view class="shoplink-like">
-                                <image catchtap="tapName" id="{{goods_id}}" class="shoplink-heart" data-src="{{item.is_collected}}" src="{{item.is_collected ? '../../imgs/heart.png' : '../../imgs/heart1.png'}}"/>
-                                <text class="heare-val">{{item.collect_num}}</text>
-                            </view>
-                        </view>
-                     </view>
-                 </navigator>
-            </view>
-        </view>
+    <view class="fixed">
+        <navigator wx:for="{{gl}}" wx:key = "{{item.article_id}}" url="../article/article?type={{ item.article_id }}&title={{ item.title }}&cat_id={{item.cat_id}}" hover-class="none">
+            <view class="gl-list">
+                <view class="article-header">
+                    <view class="article-classify">
+                        <text class="label">原创文章</text>{{item.tag}}
+                    </view>
+                    <view class="article-author">
+                        <image class="avatar" src="{{item.avatar_url}}"/>
+                        <text class="nickname">{{item.author}}</text>
+                    </view>
+                </view>
+                <image class="article-image" src="{{item.article_thumb}}"/>
+                <view class="article-title">
+                    <text class="article-title-text">{{item.title}}</text>
+                    <view class="shoplink-like">
+                        <image catchtap="tapName" id="{{goods_id}}" class="shoplink-heart" data-src="{{item.is_collected}}" src="{{item.is_collected ? '../../imgs/heart.png' : '../../imgs/heart1.png'}}"/>
+                        <text class="heare-val">{{item.collect_num}}</text>
+                    </view>
+                </view>
+             </view>
+         </navigator>
+    </view>
+</view>
+</scroll-view>
