@@ -107,9 +107,12 @@
   width: 404rpx;
   height: 77rpx;
   margin: 0 20rpx;
-  vertical-align: middle; }
+  vertical-align: middle; 
+  /* background: url("../../imgs/react.png") no-repeat; */
+  /* background-size: contain; */
+}
 
-.an-audio:after {
+/* .an-audio:after {
   content: "";
   position: absolute;
   width: 404rpx;
@@ -119,7 +122,7 @@
   vertical-align: middle;
   background: url("../../imgs/react.png") no-repeat;
   background-size: contain;
-  z-index: 696; }
+  z-index: 696; } */
 
 .an-voice {
   position: absolute;
@@ -127,22 +130,10 @@
   left: 20rpx;
   z-index: 697; }
 
-.an-voice i {
+.an-voice image {
   display: inline-block;
   width: 40rpx;
   height: 40rpx; }
-
-.v1 {
-  background: url("../img/voice1.png") no-repeat;
-  background-size: contain; }
-
-.v2 {
-  background: url("../img/voice2.png") no-repeat;
-  background-size: contain; }
-
-.v3 {
-  background: url("../img/voice3.png") no-repeat;
-  background-size: contain; }
 
 .an-audio-time {
   color: #999; }

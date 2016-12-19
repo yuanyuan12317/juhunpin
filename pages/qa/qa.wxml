@@ -38,9 +38,10 @@
                 <view class="answer">
                     <view class="an-content">
                         <image class="an-img" src="{{item.reply.user_picture}}" alt=""/>
-                        <view class="an-audio" data-src="{{item.reply.url}}" data-num="1">
+                        <view class="an-audio"  data-num="1">
+                            <image src="../../imgs/react.png" data-src="{{item.reply.url}}" bindtap="gotoPlay"  mode="aspectFit"  style="width:404rpx;height:77rpx;"/>
                             <view class="an-voice">
-                                <view class="v3"></view>
+                               <image class="v3" data-img="3" src="{{voiceImg}}"/>
                             </view>
                         </view>
                         <text class="an-audio-time">{{item.reply.duration}}"</text>
@@ -57,6 +58,8 @@
         </block>
     </view>
 </view>
+<audio  src="{{src}}" id="myAudio" ></audio>
+
 <!-- <audio  id="audio" data-nu="" style="display:none" preload="auto"  src="">
     <source src="http://a.f265.com/project/shake-money/img/shake.mp3" type="audio/mpeg">
     您的浏览器不支持，请下载聚婚品app

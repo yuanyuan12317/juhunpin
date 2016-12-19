@@ -68,6 +68,7 @@ Page({
 	      	  dayNews : dayNews,
 			  toView : toView
 	        })
+			wx.hideToast();
 	        var order = [];
 			for(var i=0;i<dayNews.length;i++){
 				order.push("w"+dayNews[i].article_id);
@@ -75,7 +76,7 @@ Page({
 			setInterval(function(){
 				that.slider(order);
 			},3000)
-			wx.hideToast();
+			
 	    })
   	},
   	//每日优选、攻略
@@ -106,9 +107,10 @@ Page({
 			gl: gl||[],
 			like:obj
 	      })
+		  wx.hideToast();
 
 	      console.log(that.data.like)
-	      wx.hideToast();
+	      
 	    })
   	},
   	//也许喜欢

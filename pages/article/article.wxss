@@ -95,7 +95,7 @@
 }
 .shoplink-goods-des {
     border-radius: 8rpx;
-    height: 200rpx;
+    height: 180rpx;
     padding-top: 20rpx;
     padding-left: 20rpx;
     background-color: #F6F6F6;
@@ -147,20 +147,25 @@
     -webkit-transform: rotate(90deg) scale(1.2); */
 }
 .shoplink-goods-link {
-    height: 60rpx;
-    padding: 15rpx 0;
+    height: 80rpx;
     margin-top: 1px;
     background-color: #F6F6F6;
     border-radius: 8rpx;
+    line-height: 80rpx;
+    position: relative;
 }
 .shoplink-goods-link .shoplink-tb,.shoplink-goods-link .shoplink-like {
-    float: left;
+    position: absolute;
+    right: 0;
+    top: 0;
     width: 50%;
+    height: 100%;
     text-align: center;
-    position: relative;
     color: #555;
-    line-height: 60rpx;
     font-size: 14px;
+}
+.shoplink-goods-link .shoplink-like {
+    left: 0;
 }
 .shoplink-heart{
     display: inline-block;
@@ -233,7 +238,7 @@
     height:250rpx;
     margin:20rpx 0;
 }
-.sv-like-item{
+.inner navigator{
     width:400rpx;
     height:250rpx;
     margin-right:20rpx;  
@@ -241,9 +246,17 @@
     flex-direction:column;
     position: relative;
 }
+.sv-like-item{
+    width:400rpx;
+    height:250rpx;
+    margin-right:20rpx;  
+    /* display:flex;
+    flex-direction:column; */
+    position: relative;
+}
 .sv-like-item image{
-    width: 100%;
-    height: 100%;
+    width:400rpx;
+    height:250rpx;
 }
 .sv-like-item text{
     position: absolute;
